@@ -4,6 +4,7 @@ import json
 import requests
 from prometheus_client import Gauge, make_wsgi_app
 from prometheus_client.core import GaugeMetricFamily, REGISTRY
+from prometheus_client import make_wsgi_app, CollectorRegistry
 
 if not (API_KEY := os.environ.get("TANK_API")):
   print("Please provide an API key via environment variable...")
@@ -67,6 +68,7 @@ class MyCollector:
             g.add_metric([station[0], station[1], station[2], e], price[e])
         yield g
 
-REGISTRY.register(MyCollector())
+registry = CollectorRegistry()
+registry.register(MyCollector())
 print("export server ready")
-app = make_wsgi_app()
+app = make_wsgi_app(registry)
