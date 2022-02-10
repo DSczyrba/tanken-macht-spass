@@ -1,0 +1,10 @@
+version: "3"
+services:
+  exporter:
+    build:
+      context: .
+    ports:
+      - 9124:80
+    environment:
+      - TANK_API
+      - IDS=0e4638dc-c2e5-41b8-b6dd-e5f38df5ea95,a5141b3c-9d0d-443b-9d14-feb78ba8c4a9,798ff64f-9e25-4717-a6e1-1ce7dc58fcf9

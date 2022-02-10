@@ -25,3 +25,7 @@ def get_ids(lat, lng, rad):
     print(f"Name: {x['name']} ID: {x['id']}")
     ids.append(x['id'])
   return ids
+
+
+if __name__ == "__main__":
+  get_ids("50.7278999", "12.9094443", "4")

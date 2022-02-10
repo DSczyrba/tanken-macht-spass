@@ -2,7 +2,7 @@ import requests, os, json
 from get_id import get_ids
 
 
-data = get_ids("50.7278999", "12.9094443", "50")
+data = get_ids("50.7278999", "12.9094443", "3")
 data = [",".join(data[i:i+10]) for i in range(0, len(data), 10)]
 
 
