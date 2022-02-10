@@ -1,14 +1,14 @@
 import requests, os, json
 
 
-def get_ids():
+def get_ids(lat, lng, rad):
   data = requests.get(
       "https://creativecommons.tankerkoenig.de/json/list.php",
       params={
           "apikey": os.environ.get("TANK_API"),
-          "lat": "50.7278999",
-          "lng": "12.9094443",
-          "rad": "50",
+          "lat": lat,
+          "lng": lng,
+          "rad": rad,
           "type": "all"
       }
   ).json()
