@@ -19,7 +19,7 @@ def get_ids(lat, lng, rad):
       "https://creativecommons.tankerkoenig.de/json/list.php",
       params={"apikey": API_KEY, "lat": lat, "lng": lng, "rad": rad, "type": "all"}).json()
   if data['status'] != "ok":
-    print("Daten konnten nicht geladen werden...")
+    print("Data could not be loaded...")
     exit()
   return [x["id"] for x in data["stations"]]
 
