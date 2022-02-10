@@ -11,8 +11,7 @@ if not (API_KEY := os.environ.get("TANK_API")):
 
 if not (IDS := os.environ.get("IDS")):
   print("Please specify IDS per environment variable comma separated...")
-  exit()
-
+  pass
 
 def get_ids(lat, lng, rad):
   data = requests.get(
@@ -36,7 +35,7 @@ def get_details(id):
     print("Please check the provided id:", id)
     exit()
 
-  adress = f"{result['station']['street']}{result['station']['houseNumber']}, {result['station']['postCode']:05} {result['station']['place']}"
+  adress = f"{result['station']['street'].strip()} {result['station']['houseNumber']}, {result['station']['postCode']:05} {result['station']['place']}"
   return [result['station']['id'], result['station']['name'], adress]
 
 def get_price(id):
@@ -44,7 +43,7 @@ def get_price(id):
         "https://creativecommons.tankerkoenig.de/json/prices.php",
         params={
             "apikey": API_KEY,
-            "id": id
+            "ids": id
         }
     ).json()
   if result['ok'] is False:
@@ -70,6 +69,7 @@ class MyCollector:
 
         #g.add_metric(["123", "musterstraße 1", "e5"], random.randint(140, 180) / 100)
         yield g
+
 
 
 REGISTRY.register(MyCollector())
