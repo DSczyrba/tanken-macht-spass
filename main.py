@@ -65,12 +65,7 @@ class MyCollector:
             continue
           for e in ["e5", "e10", "diesel"]:
             g.add_metric([station[0], station[1], station[2], e], price[e])
-
-
-        #g.add_metric(["123", "musterstraße 1", "e5"], random.randint(140, 180) / 100)
         yield g
-
-
 
 REGISTRY.register(MyCollector())
 print("export server ready")
