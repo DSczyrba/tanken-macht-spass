@@ -36,8 +36,8 @@ def get_details(id):
     print("Please check the provided id:", id)
     exit()
 
-  adress = f"{result['station']['street'].strip()} {result['station']['houseNumber']}, {result['station']['postCode']:05} {result['station']['place']}"
-  return [result['station']['id'], result['station']['name'], adress]
+  address = f"{result['station']['street'].strip()} {result['station']['houseNumber']}, {result['station']['postCode']:05} {result['station']['place']}"
+  return [result['station']['id'], result['station']['name'], address]
 
 def get_price(id):
   result = requests.get(
